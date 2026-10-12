@@ -19,7 +19,7 @@ services:
       DATABASE_URL: 'postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postiz-postgres:5432/${POSTGRES_DB}'
       REDIS_URL: 'redis://postiz-redis:6379'
       BACKEND_INTERNAL_URL: 'http://localhost:3000'
-      TEMPORAL_ADDRESS: 'temporal:7233'
+      TEMPORAL_ADDRESS: 'temporal-svc:7233'
       IS_GENERAL: 'true'
       DISABLE_REGISTRATION: 'false'
 
@@ -135,7 +135,9 @@ services:
     volumes:
       - /data/coolify/applications/ooqza5arwrvcc1ixnx6budli/dynamicconfig:/etc/temporal/config/dynamicconfig
     networks:
-      - postiz-network
+      postiz-network:
+        aliases:
+          - temporal-svc
     expose:
       - 7233
 
