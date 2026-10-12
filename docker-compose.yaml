@@ -124,7 +124,6 @@ services:
     environment:
       - DB=postgres12
       - DB_PORT=5432
-      - VISIBILITY_DBNAME=temporal_visibility
       - POSTGRES_USER=temporal
       - POSTGRES_PWD=temporal
       - POSTGRES_SEEDS=temporal-postgresql
@@ -133,6 +132,8 @@ services:
       - ES_SEEDS=temporal-elasticsearch
       - ES_VERSION=v7
       - TEMPORAL_NAMESPACE=default
+    volumes:
+      - /data/coolify/applications/ooqza5arwrvcc1ixnx6budli/dynamicconfig:/etc/temporal/config/dynamicconfig
     networks:
       - postiz-network
     expose:
